@@ -321,6 +321,16 @@
       line-height: 1.2;
     }
 
+    .ipad-card-title a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .ipad-card-title a:hover {
+      color: var(--accent-cyan);
+    }
+
     .ipad-card-desc {
       color: var(--text-muted);
       font-size: 1.05rem;
@@ -628,7 +638,47 @@
 
       <div class="ipad-stage">
         
-        <!-- CARD 1: SAP AI Invoice -->
+        <!-- CARD 1: EnterpriseGradeRAG -->
+        <div class="ipad-card">
+          <div class="ipad-card-grid">
+            <div>
+              <span class="ipad-badge">FEATURED ARCHITECTURE</span>
+              <h3 class="ipad-card-title"><a href="https://github.com/pranav-4432/EnterpriseGradeRAG" target="_blank">EnterpriseGradeRAG Pipeline ⚡</a></h3>
+              <p class="ipad-card-desc">
+                A high-performance production multi-agent Retrieval-Augmented Generation (RAG) platform engineered for scalable knowledge retrieval and hybrid vector search reranking.
+              </p>
+              <ul class="ipad-card-bullets">
+                <li>Multi-agent document ingestion, hybrid vector indexing & prompt orchestration.</li>
+                <li>Boosted query retrieval accuracy by 27% across high-density enterprise datasets.</li>
+                <li>Cut average response latency by 30% in production microservices.</li>
+              </ul>
+              <div class="ipad-card-tech">
+                <span class="tech-pill">LangChain</span>
+                <span class="tech-pill">LangGraph</span>
+                <span class="tech-pill">FastAPI</span>
+                <span class="tech-pill">Vector DB</span>
+                <span class="tech-pill">PyTorch</span>
+              </div>
+            </div>
+            
+            <div class="ipad-device-mockup">
+              <div class="mockup-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+              </div>
+              <div class="mockup-code">
+                // EnterpriseGradeRAG Pipeline<br>
+                const ragEngine = new RAGOrchestrator();<br>
+                ragEngine.useHybridSearch(vectorStore, reranker);<br>
+                ragEngine.setQueryAccuracyBoost(0.27);<br>
+                <span style="color:#4ade80;">// Query latency: -30% [OPTIMIZED]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: SAP AI Invoice -->
         <div class="ipad-card">
           <div class="ipad-card-grid">
             <div>
@@ -670,7 +720,7 @@
           </div>
         </div>
 
-        <!-- CARD 2: AGILE-EYE 2.0 -->
+        <!-- CARD 3: AGILE-EYE 2.0 -->
         <div class="ipad-card">
           <div class="ipad-card-grid">
             <div>
@@ -702,42 +752,6 @@
               <div style="text-align: center;">
                 <div class="metric-big">60 FPS</div>
                 <div class="metric-label">TensorRT Edge Inference</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 3: MediAssist -->
-        <div class="ipad-card">
-          <div class="ipad-card-grid">
-            <div>
-              <span class="ipad-badge">BEST SOLUTION AWARD WINNER</span>
-              <h3 class="ipad-card-title">MediAssist Clinical AI Platform</h3>
-              <p class="ipad-card-desc">
-                Full-stack clinical management platform featuring Tesseract OCR report extraction, Scikit-Learn disease prediction models, and Groq contextual chatbot.
-              </p>
-              <ul class="ipad-card-bullets">
-                <li>Won 1st Place out of 80+ competing teams at Techathon 2.0.</li>
-                <li>JWT-secured microservice backend handling patient search & predictions.</li>
-              </ul>
-              <div class="ipad-card-tech">
-                <span class="tech-pill">Flask</span>
-                <span class="tech-pill">MongoDB</span>
-                <span class="tech-pill">Scikit-Learn</span>
-                <span class="tech-pill">Tesseract OCR</span>
-                <span class="tech-pill">Groq LLM</span>
-              </div>
-            </div>
-
-            <div class="ipad-device-mockup">
-              <div class="mockup-header">
-                <div class="dot dot-red"></div>
-                <div class="dot dot-yellow"></div>
-                <div class="dot dot-green"></div>
-              </div>
-              <div style="text-align: center;">
-                <div class="metric-big" style="color:#f472b6;">🏆 #1</div>
-                <div class="metric-label">Rank 1 / 80+ Teams @ Techathon 2.0</div>
               </div>
             </div>
           </div>

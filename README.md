@@ -14,7 +14,7 @@
 
   <!-- Dynamic Typing Animated Header -->
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&pause=1000&color=A78BFA&center=true&vCenter=true&width=650&lines=Agentic+AI+%26+GenAI+Engineer;Multi-Agent+Orchestration+(LangGraph);Enterprise+RAG+Pipelines;Edge+Computer+Vision+(YOLOv11+%26+TensorRT);Immediate+Joiner+•+B.Tech+AI%2FML+(2026)" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&pause=1000&color=A78BFA&center=true&vCenter=true&width=650&lines=Agentic+AI+%26+GenAI+Engineer;Enterprise-Grade+RAG+Pipelines;Multi-Agent+Orchestration+(LangGraph);Edge+Computer+Vision+(YOLOv11+%26+TensorRT);Immediate+Joiner+•+B.Tech+AI%2FML+(2026)" alt="Typing SVG" />
   </a>
 
   <br/>
@@ -38,7 +38,7 @@ I am an **Agentic AI & GenAI Engineer** completing my B.Tech in AI & Machine Lea
 
 - 🤖 **AI Research Intern** @ **Innomatics Research Labs** (Jan 2026 – Jun 2026) — Building production multi-agent RAG systems & FastAPI microservices.
 - ⚡ **Production Impact Highlights**:
-  - Boosted enterprise query accuracy by **27%** and reduced response latency by **30%** on RAG pipelines.
+  - Engineered **[EnterpriseGradeRAG](https://github.com/pranav-4432/EnterpriseGradeRAG)** boosting enterprise query accuracy by **27%** and reducing response latency by **30%**.
   - Achieved an **85% reduction in invoice-cycle time** with an AI-augmented 4-agent LangGraph workflow integrated with SAP.
 - 📍 Based in **Kolhapur, India** | Open to **Agentic AI, GenAI & AI/ML Engineer** roles (**Immediate Joiner**).
 
@@ -77,16 +77,29 @@ I am an **Agentic AI & GenAI Engineer** completing my B.Tech in AI & Machine Lea
 <table>
   <tr>
     <td width="50%" valign="top">
+      <h3 align="center">⚡ <a href="https://github.com/pranav-4432/EnterpriseGradeRAG">EnterpriseGradeRAG Pipeline</a></h3>
+      <p align="center">
+        <code>LangChain</code> • <code>LangGraph</code> • <code>FastAPI</code> • <code>Vector DB</code> • <code>PyTorch</code>
+      </p>
+      <ul>
+        <li>Production-grade multi-agent Retrieval-Augmented Generation (RAG) system engineered for enterprise-scale knowledge retrieval.</li>
+        <li>Optimized vector indexing, hybrid search reranking, and multi-step prompt orchestration.</li>
+        <li>Improved enterprise query retrieval accuracy by <b>27%</b> and cut average response latency by <b>30%</b> in production.</li>
+      </ul>
+    </td>
+    <td width="50%" valign="top">
       <h3 align="center">🧾 SAP AI Invoice Automation Platform</h3>
       <p align="center">
         <code>LangGraph</code> • <code>LangChain</code> • <code>FastAPI</code> • <code>SAP S/4HANA</code> • <code>Gemini 2.0 Flash</code>
       </p>
       <ul>
         <li>Engineered a 4-agent LangGraph workflow (Extractor, Validator, Categorizer, Explainer) for automated Accounts Payable processing.</li>
-        <li>Leveraged Gemini 2.0 Flash OCR, IBAN verification & SAP HANA Vector Engine for real-time duplicate matching & in-HANA fraud scoring under 60ms.</li>
+        <li>In-HANA vector similarity scoring & fraud detection under 60ms.</li>
         <li>Delivered <b>40% touchless processing</b> and <b>85% invoice-cycle time reduction</b>.</li>
       </ul>
     </td>
+  </tr>
+  <tr>
     <td width="50%" valign="top">
       <h3 align="center">👁️ AGILE-EYE 2.0 - Edge AI Monitoring</h3>
       <p align="center">
@@ -97,8 +110,6 @@ I am an **Agentic AI & GenAI Engineer** completing my B.Tech in AI & Machine Lea
         <li>Deployed YOLOv11/OpenCV/TensorRT pipeline on NVIDIA Jetson paired with a real-time Streamlit risk dashboard.</li>
       </ul>
     </td>
-  </tr>
-  <tr>
     <td width="50%" valign="top">
       <h3 align="center">🏥 MediAssist Clinical AI Platform</h3>
       <p align="center">
@@ -107,15 +118,6 @@ I am an **Agentic AI & GenAI Engineer** completing my B.Tech in AI & Machine Lea
       <ul>
         <li>Full-stack clinical management platform featuring OCR blood report parsing, ML disease prediction, and Groq contextual chatbot.</li>
         <li>Won <b>Best Solution Award (Rank 1 out of 80+ teams)</b> at Techathon 2.0.</li>
-      </ul>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">🧠 DevMind AI Learning Platform</h3>
-      <p align="center">
-        <code>FastAPI</code> • <code>React 18</code> • <code>TypeScript</code> • <code>Tailwind</code> • <code>WebSockets</code>
-      </p>
-      <ul>
-        <li>Educational AI chatbot platform for CS students offering real-time code explanations and interactive learning workflows.</li>
       </ul>
     </td>
   </tr>
