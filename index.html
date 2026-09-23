@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pranav Pawar | Agentic AI & GenAI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #030712;
+      --accent-purple: #8b5cf6;
+      --accent-cyan: #06b6d4;
+      --accent-pink: #ec4899;
+      --glass-bg: rgba(15, 23, 42, 0.65);
+      --glass-border: rgba(139, 92, 246, 0.25);
+      --glass-glow: rgba(139, 92, 246, 0.15);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    /* Real-Time Galaxy Canvas Background */
+    #galaxy-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Smooth Scroll Page Wrapper */
+    .page-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    /* Navigation Bar */
+    nav {
+      position: fixed;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(90%, 1000px);
+      background: rgba(10, 15, 30, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 9999px;
+      padding: 0.75rem 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Fira Code', monospace;
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: linear-gradient(135deg, #a78bfa, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      text-shadow: 0 0 10px var(--accent-purple);
+    }
+
+    .nav-btn {
+      background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--accent-purple);
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 1.5rem 3rem 1.5rem;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.2rem;
+      border-radius: 9999px;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      color: #c084fc;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+    }
+
+    .hero-badge span {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #c084fc, #38bdf8, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 750px;
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      padding: 0.85rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+
+    /* APPLE IPAD STYLE SCROLL CANVAS SECTIONS */
+    .apple-scroll-container {
+      position: relative;
+      width: 100%;
+      padding: 4rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-tag {
+      font-family: 'Fira Code', monospace;
+      color: var(--accent-cyan);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    /* IPAD 3D CARD SHOWCASE ENGINE */
+    .ipad-stage {
+      perspective: 1200px;
+      width: min(92%, 1100px);
+      margin: 0 auto;
+    }
+
+    .ipad-card {
+      position: relative;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 3rem;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      margin-bottom: 5rem;
+      transform-style: preserve-3d;
+      transform: rotateX(15deg) scale(0.92);
+      opacity: 0.3;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease, border-color 0.4s ease;
+      will-change: transform, opacity;
+    }
+
+    .ipad-card.active {
+      transform: rotateX(0deg) scale(1);
+      opacity: 1;
+      border-color: rgba(139, 92, 246, 0.6);
+      box-shadow: 0 40px 100px rgba(139, 92, 246, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .ipad-card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .ipad-card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .ipad-badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      background: rgba(6, 182, 212, 0.15);
+      color: #38bdf8;
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: 'Fira Code', monospace;
+      margin-bottom: 1rem;
+    }
+
+    .ipad-card-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .ipad-card-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .ipad-card-bullets {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .ipad-card-bullets li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .ipad-card-bullets li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--accent-purple);
+      font-size: 0.9rem;
+    }
+
+    .ipad-card-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-family: 'Fira Code', monospace;
+      color: #e2e8f0;
+    }
+
+    /* IPAD INTERACTIVE MOCKUP GRAPHIC */
+    .ipad-device-mockup {
+      position: relative;
+      background: #090d16;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .ipad-device-mockup::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .mockup-header {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .mockup-code {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: #a78bfa;
+      line-height: 1.6;
+    }
+
+    .metric-big {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #38bdf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* METRICS STRIP */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      width: min(92%, 1100px);
+      margin: 2rem auto 6rem auto;
+    }
+
+    .metric-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5deg);
+      border-color: var(--accent-purple);
+    }
+
+    .metric-val {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-val.purple { color: #c084fc; }
+    .metric-val.cyan { color: #38bdf8; }
+    .metric-val.pink { color: #f472b6; }
+    .metric-val.green { color: #4ade80; }
+
+    .metric-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* SKILLS GRID */
+    .skills-section {
+      width: min(92%, 1100px);
+      margin: 4rem auto;
+    }
+
+    .skills-category {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(16px);
+    }
+
+    .skills-cat-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skills-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .skill-chip:hover {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: rgba(139, 92, 246, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--glass-border);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      background: rgba(3, 7, 18, 0.8);
+      backdrop-filter: blur(20px);
+      margin-top: 6rem;
+    }
+
+    .footer-text {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-cyan);
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Real-Time Interactive Galaxy Background Canvas -->
+  <canvas id="galaxy-canvas"></canvas>
+
+  <div class="page-container">
+    
+    <!-- Navbar -->
+    <nav>
+      <div class="nav-logo">✦ PRANAV PAWAR</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#metrics">Impact</a></li>
+        <li><a href="#skills">Skills</a></li>
+      </ul>
+      <a href="https://github.com/pranav-4432" target="_blank" class="nav-btn">GitHub Profile</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="about">
+      <div class="hero-badge">
+        <span></span> Immediate Joiner • AI/ML & Agentic AI Engineer
+      </div>
+      
+      <h1 class="hero-title">
+        Orchestrating <span>Agentic AI</span><br>& Enterprise RAG Systems
+      </h1>
+
+      <p class="hero-subtitle">
+        B.Tech in AI & ML (2026). Specializing in LangChain, LangGraph multi-agent workflows, enterprise document intelligence, and edge computer vision.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">Explore Interactive Projects 🚀</a>
+        <a href="https://github.com/pranav-4432" target="_blank" class="btn-secondary">GitHub @pranav-4432</a>
+      </div>
+    </section>
+
+    <!-- Metrics Highlights -->
+    <section class="metrics-grid" id="metrics">
+      <div class="metric-card">
+        <div class="metric-val purple">+27%</div>
+        <div class="metric-desc">Enterprise RAG Query Accuracy</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val cyan">-30%</div>
+        <div class="metric-desc">RAG Pipeline Latency Reduction</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val pink">85%</div>
+        <div class="metric-desc">Invoice Cycle Time Reduction</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val green">#1</div>
+        <div class="metric-desc">Techathon 2.0 Winner (80+ Teams)</div>
+      </div>
+    </section>
+
+    <!-- Apple iPad Style Smooth Scroll Section -->
+    <section class="apple-scroll-container" id="projects">
+      <div class="section-header">
+        <span class="section-tag">Featured Architectures</span>
+        <h2 class="section-title">Apple-Style Interactive Showcase</h2>
+      </div>
+
+      <div class="ipad-stage">
+        
+        <!-- CARD 1: SAP AI Invoice -->
+        <div class="ipad-card">
+          <div class="ipad-card-grid">
+            <div>
+              <span class="ipad-badge">AGENTIC WORKFLOW</span>
+              <h3 class="ipad-card-title">SAP AI Invoice Automation Platform</h3>
+              <p class="ipad-card-desc">
+                A 4-agent LangGraph system executing document OCR extraction, SAP database validation, categorization, and fraud detection in real-time.
+              </p>
+              <ul class="ipad-card-bullets">
+                <li>Multi-agent graph with Extractor, Validator, Categorizer, and Explainer nodes.</li>
+                <li>In-HANA vector similarity scoring with fraud latency under 60ms.</li>
+                <li>Achieved 40% touchless processing and 85% processing time reduction.</li>
+              </ul>
+              <div class="ipad-card-tech">
+                <span class="tech-pill">LangGraph</span>
+                <span class="tech-pill">LangChain</span>
+                <span class="tech-pill">FastAPI</span>
+                <span class="tech-pill">SAP S/4HANA</span>
+                <span class="tech-pill">Gemini 2.0 Flash</span>
+              </div>
+            </div>
+            
+            <div class="ipad-device-mockup">
+              <div class="mockup-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+              </div>
+              <div class="mockup-code">
+                // LangGraph Invoice Orchestrator<br>
+                const workflow = new StateGraph();<br>
+                workflow.addNode("ocr_extractor", extractData);<br>
+                workflow.addNode("sap_validator", validateIBAN);<br>
+                workflow.addNode("fraud_detector", scoreHANA);<br>
+                workflow.addEdge("ocr_extractor", "sap_validator");<br>
+                <span style="color:#4ade80;">// Execution time: 48ms [TOUCHLESS]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: AGILE-EYE 2.0 -->
+        <div class="ipad-card">
+          <div class="ipad-card-grid">
+            <div>
+              <span class="ipad-badge">EDGE COMPUTER VISION</span>
+              <h3 class="ipad-card-title">AGILE-EYE 2.0 – Turbine Anomaly Monitoring</h3>
+              <p class="ipad-card-desc">
+                Edge-computed wind turbine health monitoring fusing computer vision, Laser Doppler Vibrometry, and real-time SCADA telemetry.
+              </p>
+              <ul class="ipad-card-bullets">
+                <li>YOLOv11 custom object detection optimized with NVIDIA TensorRT.</li>
+                <li>Real-time telemetry ingestion via MQTT into a Streamlit dashboard.</li>
+                <li>Edge deployment on NVIDIA Jetson hardware.</li>
+              </ul>
+              <div class="ipad-card-tech">
+                <span class="tech-pill">YOLOv11</span>
+                <span class="tech-pill">TensorRT</span>
+                <span class="tech-pill">NVIDIA Jetson</span>
+                <span class="tech-pill">OpenCV</span>
+                <span class="tech-pill">MQTT</span>
+              </div>
+            </div>
+
+            <div class="ipad-device-mockup">
+              <div class="mockup-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+              </div>
+              <div style="text-align: center;">
+                <div class="metric-big">60 FPS</div>
+                <div class="metric-label">TensorRT Edge Inference</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: MediAssist -->
+        <div class="ipad-card">
+          <div class="ipad-card-grid">
+            <div>
+              <span class="ipad-badge">BEST SOLUTION AWARD WINNER</span>
+              <h3 class="ipad-card-title">MediAssist Clinical AI Platform</h3>
+              <p class="ipad-card-desc">
+                Full-stack clinical management platform featuring Tesseract OCR report extraction, Scikit-Learn disease prediction models, and Groq contextual chatbot.
+              </p>
+              <ul class="ipad-card-bullets">
+                <li>Won 1st Place out of 80+ competing teams at Techathon 2.0.</li>
+                <li>JWT-secured microservice backend handling patient search & predictions.</li>
+              </ul>
+              <div class="ipad-card-tech">
+                <span class="tech-pill">Flask</span>
+                <span class="tech-pill">MongoDB</span>
+                <span class="tech-pill">Scikit-Learn</span>
+                <span class="tech-pill">Tesseract OCR</span>
+                <span class="tech-pill">Groq LLM</span>
+              </div>
+            </div>
+
+            <div class="ipad-device-mockup">
+              <div class="mockup-header">
+                <div class="dot dot-red"></div>
+                <div class="dot dot-yellow"></div>
+                <div class="dot dot-green"></div>
+              </div>
+              <div style="text-align: center;">
+                <div class="metric-big" style="color:#f472b6;">🏆 #1</div>
+                <div class="metric-label">Rank 1 / 80+ Teams @ Techathon 2.0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section class="skills-section" id="skills">
+      <div class="section-header">
+        <span class="section-tag">Core Capabilities</span>
+        <h2 class="section-title">Technical Skill Stack</h2>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="skills-cat-title">🤖 Agentic AI & Generative AI</h3>
+        <div class="skills-flex">
+          <span class="skill-chip">LangChain</span>
+          <span class="skill-chip">LangGraph</span>
+          <span class="skill-chip">RAG Pipelines</span>
+          <span class="skill-chip">Multi-Agent Systems</span>
+          <span class="skill-chip">Vector Databases (HANA/Chroma)</span>
+          <span class="skill-chip">Prompt Engineering</span>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="skills-cat-title">⚡ Machine Learning & Computer Vision</h3>
+        <div class="skills-flex">
+          <span class="skill-chip">PyTorch</span>
+          <span class="skill-chip">TensorFlow</span>
+          <span class="skill-chip">OpenCV</span>
+          <span class="skill-chip">YOLOv11</span>
+          <span class="skill-chip">TensorRT</span>
+          <span class="skill-chip">NVIDIA Jetson</span>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="skills-cat-title">🛠️ Engineering & Enterprise Systems</h3>
+        <div class="skills-flex">
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">FastAPI</span>
+          <span class="skill-chip">Docker</span>
+          <span class="skill-chip">SQL / PostgreSQL</span>
+          <span class="skill-chip">MongoDB</span>
+          <span class="skill-chip">SAP ABAP for HANA</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p class="footer-text">Designed & Built by Pranav Baburao Pawar • 2026</p>
+      <div class="social-links">
+        <a href="https://github.com/pranav-4432" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/pranavpawardev" target="_blank">LinkedIn</a>
+        <a href="mailto:pranavpawar5354@gmail.com">Email</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Real-Time Particle Galaxy & Apple Scroll JS Engine -->
+  <script>
+    // -------------------------------------------------------------
+    // 1. REAL-TIME 3D PARTICLE GALAXY CANVAS ENGINE
+    // -------------------------------------------------------------
+    const canvas = document.getElementById('galaxy-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      initStars();
+    });
+
+    let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
+    window.addEventListener('mousemove', (e) => {
+      mouse.targetX = e.clientX;
+      mouse.targetY = e.clientY;
+    });
+
+    const STAR_COUNT = 1200;
+    let stars = [];
+
+    class Star {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = (Math.random() - 0.5) * width * 2;
+        this.y = (Math.random() - 0.5) * height * 2;
+        this.z = Math.random() * width;
+        this.radius = Math.random() * 1.5 + 0.5;
+        this.baseColor = Math.random() > 0.5 ? '#8b5cf6' : (Math.random() > 0.5 ? '#06b6d4' : '#ec4899');
+        this.alpha = Math.random() * 0.8 + 0.2;
+        this.angle = Math.atan2(this.y, this.x);
+        this.dist = Math.sqrt(this.x * this.x + this.y * this.y);
+        this.speed = (0.0005 + Math.random() * 0.001);
+      }
+
+      update() {
+        // Real-time galaxy rotation physics
+        this.angle += this.speed;
+        this.x = Math.cos(this.angle) * this.dist;
+        this.y = Math.sin(this.angle) * this.dist;
+
+        // Smooth Mouse Parallax
+        mouse.x += (mouse.targetX - mouse.x) * 0.05;
+        mouse.y += (mouse.targetY - mouse.y) * 0.05;
+      }
+
+      draw() {
+        // 3D Perspective Projection
+        const perspective = 400;
+        const scale = perspective / (perspective + this.z);
+        const projX = this.x * scale + width / 2 + (mouse.x - width / 2) * 0.03 * scale;
+        const projY = this.y * scale + height / 2 + (mouse.y - height / 2) * 0.03 * scale;
+
+        if (projX < 0 || projX > width || projY < 0 || projY > height) return;
+
+        ctx.save();
+        ctx.globalAlpha = this.alpha * scale;
+        ctx.fillStyle = this.baseColor;
+        ctx.shadowBlur = 10 * scale;
+        ctx.shadowColor = this.baseColor;
+        ctx.beginPath();
+        ctx.arc(projX, projY, this.radius * scale * 1.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function initStars() {
+      stars = [];
+      for (let i = 0; i < STAR_COUNT; i++) {
+        stars.push(new Star());
+      }
+    }
+
+    function animateGalaxy() {
+      ctx.fillStyle = 'rgba(3, 7, 18, 0.25)'; // Trail effect
+      ctx.fillRect(0, 0, width, height);
+
+      // Core accretion glow
+      const gradient = ctx.createRadialGradient(width/2, height/2, 10, width/2, height/2, width*0.4);
+      gradient.addColorStop(0, 'rgba(139, 92, 246, 0.08)');
+      gradient.addColorStop(0.5, 'rgba(6, 182, 212, 0.03)');
+      gradient.addColorStop(1, 'transparent');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      stars.forEach(star => {
+        star.update();
+        star.draw();
+      });
+
+      requestAnimationFrame(animateGalaxy);
+    }
+
+    initStars();
+    animateGalaxy();
+
+    // -------------------------------------------------------------
+    // 2. APPLE IPAD STYLE SMOOTH SCROLL CARD ENGINE
+    // -------------------------------------------------------------
+    const ipadCards = document.querySelectorAll('.ipad-card');
+
+    const observerOptions = {
+      root: null,
+      threshold: 0.35,
+      rootMargin: "0px"
+    };
+
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        } else {
+          entry.target.classList.remove('active');
+        }
+      });
+    }, observerOptions);
+
+    ipadCards.forEach(card => cardObserver.observe(card));
+  </script>
+</body>
+</html>
