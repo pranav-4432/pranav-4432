@@ -19,7 +19,7 @@
 
   <br/>
 
-  <h1>Hey there 👋 I'm Pranav Baburao Pawar</h1>
+  <h1>Hey there I'm Pranav </h1>
 
   <p align="center">
     <a href="https://linkedin.com/in/pranavpawardev"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" /></a>
