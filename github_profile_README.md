@@ -8,7 +8,7 @@
   <br/><br/>
 
   <!-- Tech Avatar -->
-  <img src="https://imgcdn.stablediffusionweb.com/2025/9/11/c39c844d-ef90-4678-909c-687f4835cbb7.jpg" width="150" height="150" style="border-radius: 50%; object-fit: cover; box-shadow: 0 0 25px rgba(139, 92, 246, 0.6);" alt="Pranav Pawar Avatar" />
+  <img src="assets/profile.png" width="160" height="160" alt="Pranav Pawar" />
 
   <br/><br/>
 
