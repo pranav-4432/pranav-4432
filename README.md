@@ -1,9 +1,6 @@
 <div align="center">
 
-  <!-- Real-Time Interactive 3D Galaxy Portfolio Banner CTA -->
-  <a href="https://pranav-4432.github.io" target="_blank">
-    <img src="https://img.shields.io/badge/✨_EXPLORE_INTERACTIVE_3D_GALAXY_PORTFOLIO-8B5CF6?style=for-the-badge&logo=stars&logoColor=white" alt="Live 3D Portfolio" />
-  </a>
+ 
 
   <br/><br/>
 
