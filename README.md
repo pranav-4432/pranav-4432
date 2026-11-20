@@ -9,10 +9,7 @@
 
   <br/><br/>
 
-  <!-- Dynamic Typing Animated Header -->
-  <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=24&pause=1000&color=A78BFA&center=true&vCenter=true&width=650&lines=Agentic+AI+%26+GenAI+Engineer;Enterprise-Grade+RAG+Pipelines;Multi-Agent+Orchestration+(LangGraph);Edge+Computer+Vision+(YOLOv11+%26+TensorRT);Immediate+Joiner+•+B.Tech+AI%2FML+(2026)" alt="Typing SVG" />
-  </a>
+
 
   <br/>
 
