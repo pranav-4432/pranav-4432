@@ -38,14 +38,6 @@ I am an **Agentic AI & GenAI Engineer** completing my B.Tech in AI & Machine Lea
 
 ---
 
-### 🌌 Live Interactive Experience
-
-> [!TIP]
-> 🚀 **Experience my Apple-Style 3D Particle Galaxy Web Portfolio**:  
-> Featuring real-time WebGL particle physics, mouse gravity interaction, and smooth 3D scroll transitions:  
-> 👉 **[Launch Live 3D Galaxy Portfolio](https://pranav-4432.github.io)**
-
----
 
 ### 🛠️ Languages and Tools
 
