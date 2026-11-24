@@ -149,10 +149,10 @@ def hero():
         for i, (y, txt) in enumerate(rows):
             portrait.append(
                 f'<text class="f" style="animation-delay:{0.25 + i * 0.018:.3f}s;animation-duration:.35s" '
-                f'xml:space="preserve" x="20" y="{y}" fill="{INK}" font-size="7.2" '
+                f'xml:space="preserve" x="20" y="{y}" fill="{INK}" font-size="8.0" '
                 f'textLength="800" lengthAdjust="spacing">{txt}</text>'
             )
-    s = 0.41
+    s = 0.425
     body = f"""
 <defs>
   <linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="600" y2="0">
