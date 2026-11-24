@@ -20,7 +20,7 @@ ROOT = os.path.join(HERE, "..")
 DATA = os.path.join(ROOT, "data", "contributions.json")
 OUT = os.path.join(ROOT, "cards")
 FONTS = os.path.join(ROOT, "fonts")
-PORTRAIT = os.path.join(ROOT, "pranav-ascii.svg")
+PORTRAIT_IMAGE = os.path.join(ROOT, "assets", "hero-portrait.webp")
 
 # ---- Brand tokens -----------------------------------------------------------
 PAPER = "#f3f3f1"
@@ -142,17 +142,14 @@ def text_lines(x, y, lines, lh, attrs):
 # ---- 1 · Hero Card ------------------------------------------------------------
 def hero():
     h = 420
-    portrait = []
-    if os.path.exists(PORTRAIT):
-        src = open(PORTRAIT, encoding="utf-8").read()
-        rows = re.findall(r'<text xml:space="preserve"[^>]*\by="([\d.]+)"[^>]*>(.*?)</text>', src, re.S)
-        for i, (y, txt) in enumerate(rows):
-            portrait.append(
-                f'<text class="f" style="animation-delay:{0.25 + i * 0.018:.3f}s;animation-duration:.35s" '
-                f'xml:space="preserve" x="20" y="{y}" fill="{INK}" font-size="8.0" '
-                f'textLength="800" lengthAdjust="spacing">{txt}</text>'
-            )
-    s = 0.425
+    with open(PORTRAIT_IMAGE, "rb") as image_file:
+        portrait_data = base64.b64encode(image_file.read()).decode("ascii")
+    portrait = (
+        f'<image class="f" style="animation-delay:.25s" '
+        f'href="data:image/webp;base64,{portrait_data}" '
+        f'x="560" y="22" width="320" height="408" '
+        f'preserveAspectRatio="xMidYMid meet"/>'
+    )
     body = f"""
 <defs>
   <linearGradient id="shine" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="600" y2="0">
@@ -177,9 +174,7 @@ def hero():
   <text x="48" y="396" font-family="{MONO}" font-size="13" fill="{INK}">pranav-4432.github.io</text>
   <text class="nu" x="220" y="396" font-family="{MONO}" font-size="13" fill="{AGENTIC}">&#8599;</text>
 </g>
-<g transform="translate(520 46) scale({s}) translate(-20 -37)" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
-  {''.join(portrait)}
-</g>
+{portrait}
 """
     write("hero.svg", svg(W, h, body, ["serif", "serif-i", "sans", "mono"],
                           "Pranav Pawar. Agentic AI & GenAI Engineer. Immediate Joiner."))
