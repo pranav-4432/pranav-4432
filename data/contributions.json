@@ -1,22 +1,22 @@
 {
   "username": "pranav-4432",
-  "generated_at": "2026-11-27T16:47:55Z",
+  "generated_at": "2026-11-28T15:40:11Z",
   "range": {
     "start": "2025-11-23",
+    "end": "2026-11-28"
+  },
+  "total_contributions": 43,
+  "active_days": 25,
+  "avg_per_active_day": 1.7,
+  "current_streak": {
+    "length": 6,
+    "start": "2026-11-22",
     "end": "2026-11-27"
   },
-  "total_contributions": 42,
-  "active_days": 24,
-  "avg_per_active_day": 1.8,
-  "current_streak": {
-    "length": 5,
-    "start": "2026-11-22",
-    "end": "2026-11-26"
-  },
   "longest_streak": {
-    "length": 5,
-    "start": "2026-05-25",
-    "end": "2026-05-29"
+    "length": 6,
+    "start": "2026-11-22",
+    "end": "2026-11-27"
   },
   "best_day": {
     "date": "2026-11-24",
@@ -73,7 +73,7 @@
     },
     {
       "month": "2026-11",
-      "total": 18
+      "total": 19
     }
   ],
   "days": [
@@ -1924,6 +1924,11 @@
     },
     {
       "date": "2026-11-27",
+      "count": 1,
+      "level": 1
+    },
+    {
+      "date": "2026-11-28",
       "count": 0,
       "level": 0
     }
